@@ -39,6 +39,7 @@ public class RepositoryConfigModule {
     private ClientModule.RetrofitConfiguration mRetrofitConfiguration;
     private ClientModule.OkhttpConfiguration mOkhttpConfiguration;
     private ClientModule.GsonConfiguration mGsonConfiguration;
+    private ClientModule.RxCacheConfiguration mRxCacheConfiguration;
     private RequestInterceptor.Level mPrintHttpLogLevel;
 
 
@@ -53,6 +54,7 @@ public class RepositoryConfigModule {
         this.mRetrofitConfiguration = builder.retrofitConfiguration;
         this.mOkhttpConfiguration = builder.okhttpConfiguration;
         this.mGsonConfiguration = builder.gsonConfiguration;
+        this.mRxCacheConfiguration = builder.rxCacheConfiguration;
         this.mPrintHttpLogLevel = builder.printHttpLogLevel;
     }
 
@@ -123,6 +125,12 @@ public class RepositoryConfigModule {
         return mGsonConfiguration;
     }
 
+    @Singleton
+    @Provides
+    @Nullable
+    ClientModule.RxCacheConfiguration provideRxCacheConfiguration() {
+        return mRxCacheConfiguration;
+    }
 
     @Singleton
     @Provides
@@ -142,6 +150,7 @@ public class RepositoryConfigModule {
         private ClientModule.RetrofitConfiguration retrofitConfiguration;
         private ClientModule.OkhttpConfiguration okhttpConfiguration;
         private ClientModule.GsonConfiguration gsonConfiguration;
+        private ClientModule.RxCacheConfiguration rxCacheConfiguration;
         private RequestInterceptor.Level printHttpLogLevel;
 
 
@@ -204,6 +213,11 @@ public class RepositoryConfigModule {
 
         public Builder gsonConfiguration(ClientModule.GsonConfiguration gsonConfiguration) {
             this.gsonConfiguration = gsonConfiguration;
+            return this;
+        }
+
+        public Builder rxCacheConfiguration(ClientModule.RxCacheConfiguration rxCacheConfiguration) {
+            this.rxCacheConfiguration = rxCacheConfiguration;
             return this;
         }
 

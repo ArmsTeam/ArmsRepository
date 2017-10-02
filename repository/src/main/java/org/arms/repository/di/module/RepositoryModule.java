@@ -10,6 +10,7 @@ import javax.inject.Singleton;
 import dagger.Lazy;
 import dagger.Module;
 import dagger.Provides;
+import io.rx_cache2.internal.RxCache;
 import retrofit2.Retrofit;
 
 /**
@@ -27,7 +28,7 @@ public class RepositoryModule {
 
     @Singleton
     @Provides
-    IRepositoryManager provideRepositoryManager(Lazy<Retrofit> retrofit) {
-        return new RepositoryManager(mApplication, retrofit);
+    IRepositoryManager provideRepositoryManager(Lazy<Retrofit> retrofit, Lazy<RxCache> rxCache) {
+        return new RepositoryManager(mApplication, retrofit, rxCache);
     }
 }
