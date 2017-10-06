@@ -1,1 +1,1 @@
-include ':repository'
+include ':repository', ':sample'
